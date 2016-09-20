@@ -18,7 +18,6 @@ HTMLWidgets.widget({
     return {
 
       renderValue: function(x) {
-        timeline.itemsData.clear();
         timeline.itemsData.add(x.items);
       },
 
