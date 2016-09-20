@@ -1,0 +1,27 @@
+Package: timevisBasic
+Title: TODO
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Dean", "Attali", email = "daattali@gmail.com",
+      role = c("aut", "cre"), comment = "R interface"),
+    person(family = "Almende B.V.", role = c("aut", "cph"),
+       comment = "vis.js library, http://visjs.org, http://www.almende.com/home")
+      )
+Description: TODO
+URL: https://github.com/daattali/timevisBasic
+Depends:
+    R (>= 3.1.0)
+Imports:
+    htmltools (>= 0.2.6),
+    htmlwidgets (>= 0.6),
+    jsonlite,
+    magrittr,
+    methods,
+    rmarkdown,
+    shiny
+Suggests:
+    knitr (>= 1.7)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 5.0.1
