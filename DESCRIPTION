@@ -1,5 +1,5 @@
 Package: timevisBasic
-Title: Helper Package To Learn Advanced 'htmlwidgets' Techniques
+Title: Helper Package To Learn Advanced 'htmlwidgets' Tips
 Version: 0.1
 Authors@R: c(
     person("Dean", "Attali", email = "daattali@gmail.com",
@@ -10,7 +10,7 @@ Authors@R: c(
 Description: The 'timevis' package is an htmlwidget that lets you create
     timeline visualizations. This package includes a very basic implementation
     of the 'timevis' package and is used as an educational tool for teaching
-    advanced 'htmlwidgets' techniques. See
+    advanced 'htmlwidgets' tips. See
     http://deanattali.com/blog/advanced-htmlwidgets-tips for the tutorial.
 URL: https://github.com/daattali/timevisBasic
 Depends:
