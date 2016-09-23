@@ -4,10 +4,34 @@
 \alias{timevis}
 \title{Create a basic timeline visualization}
 \usage{
-timevis(data = NULL, width = NULL, height = NULL, elementId = NULL)
+timevis(data = list(), width = NULL, height = NULL, elementId = NULL)
 }
 \description{
 Create a basic timeline visualization
+}
+\examples{
+# Example 1 - no data
+timevis()
+
+# Example 2 - with data
+
+# The data to use UNTIL you implement tip 3 (implementing 'dataframeToD3()')
+data <- list(list(content = "today", start = Sys.Date()),
+            list(content = "tomorrow", start = Sys.Date() + 1))
+# The data to use AFTER you implement tip 3 (implementing 'dataframeToD3()')
+data <- data.frame(content = c("today", "tomorrow"),
+                   start = c(Sys.Date(), Sys.Date() + 1))
+
+# Example 3 - in a Shiny app
+library(shiny)
+shinyApp(
+  ui = timevisOutput("timeline"),
+  server = function(input, output) {
+    output$timeline <- renderTimevis(
+      timevis(data)
+    )
+  }
+)
 }
 \seealso{
 \href{http://daattali.com/shiny/timevis-demo/}{Demo Shiny app}

@@ -6,8 +6,13 @@
 #' timevis()
 #' 
 #' # Example 2 - with data
+#' 
+#' # The data to use UNTIL you implement tip 3 (implementing 'dataframeToD3()')
 #' data <- list(list(content = "today", start = Sys.Date()),
 #'             list(content = "tomorrow", start = Sys.Date() + 1))
+#' # The data to use AFTER you implement tip 3 (implementing 'dataframeToD3()')
+#' # data <- data.frame(content = c("today", "tomorrow"),
+#' #                    start = c(Sys.Date(), Sys.Date() + 1))
 #' timevis(data)
 #' 
 #' # Example 3 - in a Shiny app

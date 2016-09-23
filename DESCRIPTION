@@ -1,13 +1,17 @@
 Package: timevisBasic
-Title: TODO
-Version: 0.0.0.9000
+Title: Helper Package To Learn Advanced 'htmlwidgets' Techniques
+Version: 0.1
 Authors@R: c(
     person("Dean", "Attali", email = "daattali@gmail.com",
       role = c("aut", "cre"), comment = "R interface"),
     person(family = "Almende B.V.", role = c("aut", "cph"),
        comment = "vis.js library, http://visjs.org, http://www.almende.com/home")
       )
-Description: TODO
+Description: The 'timevis' package is an htmlwidget that lets you create
+    timeline visualizations. This package includes a very basic implementation
+    of the 'timevis' package and is used as an educational tool for teaching
+    advanced 'htmlwidgets' techniques. See
+    http://deanattali.com/blog/advanced-htmlwidgets-tips for the tutorial.
 URL: https://github.com/daattali/timevisBasic
 Depends:
     R (>= 3.1.0)
