@@ -33,13 +33,19 @@ shinyApp(
 
 ### Example code for tip 1:
 
+[See the code changes for tip 1](https://github.com/daattali/timevisBasic/compare/tip1-rendervalue-x-name#diff)
+
 Tip 1 was a very small change so the previous code will still work the same way.
 
 ### Example code for tip 2:
 
+[See the code changes for tip 2](https://github.com/daattali/timevisBasic/compare/tip1-rendervalue-x-name...tip2-custom-html#diff)
+
 The previous code will still work, but now you should be able to see zoom in and zoom out buttons (though we didn't make those buttons functional).
 
 ### Example code for tip 3:
+
+[See the code changes for tip 3](https://github.com/daattali/timevisBasic/compare/tip2-custom-html...tip3-dataframeToD3#diff)
 
 We added `dataframeToD3()` function, so now our data frame can be simplified, but the app code remains the same.
 
@@ -57,6 +63,8 @@ shinyApp(
 ```
 
 ### Example code for tip 4:
+
+[See the code changes for tip 4](https://github.com/daattali/timevisBasic/compare/tip3-dataframeToD3...tip4-rendervalue-multiple-times#diff)
 
 In this tip, we made sure the widget only renders the latest data, rather than all the previous data as well. Run the following shiny app now, and try running it prior to tip 4 to see the difference.
 
@@ -77,13 +85,19 @@ shinyApp(
 
 ### Example code for tip 5:
 
+[See the code changes for tip 5](https://github.com/daattali/timevisBasic/compare/tip4-rendervalue-multiple-times...tip5-init-once#diff)
+
 Run the same code as before, and you'll see that the initialization message runs only once.
 
 ### Example code for tip 6:
 
+[See the code changes for tip 6](https://github.com/daattali/timevisBasic/compare/tip5-init-once...tip6-shinyMode#diff)
+
 If you run the same Shiny app code as before, you'll get a message telling you that you're inside a Shiny app. If you simply run `timevis()` in the console, the widget will render, but you will not be told you're in Shiny.
 
 ### Example code for tip 7a:
+
+[See the code changes for tip 7a](https://github.com/daattali/timevisBasic/compare/tip6-shinyMode...tip7a-widget-to-r-data#diff
 
 You can now select events in the timeline (by clicking on them) and the event ID (which just looks like random text) will be passed back to R.
 
@@ -109,6 +123,8 @@ shinyApp(
 
 ### Example code for tip 7b:
 
+[See the code changes for tip 7b](https://github.com/daattali/timevisBasic/compare/tip7a-widget-to-r-data...tip7b-javascript-to-r-handler#diff)
+
 The data from the timeline can now be passed back into R whenever it changes (you can double click anywhere to create a new item, or click on item to delete it).
 
 ```
@@ -133,6 +149,8 @@ shinyApp(
 
 ### Example code for tip 8a:
 
+[See the code changes for tip 8a](https://github.com/daattali/timevisBasic/compare/tip7b-javascript-to-r-handler...tip8a-api-basic#diff)
+
 We just implemented a simple API function `setWindow()`, which we can call in a Shiny app.
 
 ```
@@ -154,9 +172,13 @@ shinyApp(
 
 ### Example code for tip 8b:
 
+[See the code changes for tip 8b](https://github.com/daattali/timevisBasic/compare/tip8a-api-basic...tip8b-api-abstract#diff)
+
 Nothing user-facing has changed, we just abstracted a lot of the API code. The previous app code should still work. 
 
 ### Example code for tip 8c:
+
+[See the code changes for tip 8c](https://github.com/daattali/timevisBasic/compare/tip8b-api-abstract...tip8c-api-chain#diff)
 
 We can now chain API functions with `%>%` to make it easy to call multiple functions consecutively.
 
@@ -179,6 +201,8 @@ shinyApp(
 ```
 
 ### Example code for tip 8d:
+
+[See the code changes for tip 8d](https://github.com/daattali/timevisBasic/compare/tip8c-api-chain...tip8d-api-not-just-shiny#diff)
 
 You can now call API functions directly on an htmlwidget rather than using an ID, and they are also chain-able. This means that API functions can even be called on timeline widgets that are rendered outside of Shiny.
 
