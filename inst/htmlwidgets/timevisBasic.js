@@ -39,6 +39,19 @@ HTMLWidgets.widget({
         }
         timeline.itemsData.clear();
         timeline.itemsData.add(opts.items);
+
+        // Now that the timeline is initialized, call any outstanding API
+        // functions that the user wantd to run on the timeline before it was
+        // ready
+        var numApiCalls = opts['api'].length;
+        for (var i = 0; i < numApiCalls; i++) {
+          var call = opts['api'][i];
+          var method = call.method;
+          delete call['method'];
+          try {
+            this[method](call);
+          } catch(err) {}
+        }
       },
 
       resize : function(width, height) {

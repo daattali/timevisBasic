@@ -33,6 +33,8 @@ timevis <- function(data, width = NULL, height = NULL, elementId = NULL) {
   x = list(
     items = items
   )
+  
+  x$api <- list()
 
   # create widget
   htmlwidgets::createWidget(
@@ -106,9 +108,26 @@ dataframeToD3 <- function(df) {
 callJS <- function() {
   message <- Filter(function(x) !is.symbol(x), as.list(parent.frame(1)))
   session <- shiny::getDefaultReactiveDomain()
-  method <- paste0("timevis:", message$method)
-  session$sendCustomMessage(method, message)
-  return(message$id)
+
+  # If a timevis widget was passed in, this is during a chain pipeline in the
+  # initialization of the widget, so keep track of the desired function call
+  # by adding it to a list of functions that should be performed when the widget
+  # is ready
+  if (methods::is(message$id, "timevisBasic")) {
+    widget <- message$id
+    message$id <- NULL
+    widget$x$api <- c(widget$x$api, list(message))
+    return(widget)
+  }
+  # If an ID was passed, the widget already exists and we can simply call the
+  # appropriate JS function
+  else if (is.character(message$id)) {
+    method <- paste0("timevis:", message$method)
+    session$sendCustomMessage(method, message)
+    return(message$id)
+  } else {
+    stop("The `id` argument must be either a timevis htmlwidget or an ID of one")
+  }
 }
 
 #' @export
