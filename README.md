@@ -4,7 +4,7 @@ The [`timevis`](https://github.com/daattali/timevis) package is an htmlwidget th
 
 ## Tutorial
 
-See the full tutorial [here](http://deanattali.com/blog/advanced-htmlwidgets-tips).
+[Read the full tutorial here](http://deanattali.com/blog/advanced-htmlwidgets-tips).
 
 The code in this package is used as the starting point for the tutorial above. Every tip in the tutorial will walk you through adding a useful feature to the package, and you can see the final result of each step as a [separate branch](https://github.com/daattali/timevisBasic/branches/all) in this repo.
 
