@@ -85,12 +85,105 @@ If you run the same Shiny app code as before, you'll get a message telling you t
 
 ### Example code for tip 7a:
 
+You can now select events in the timeline (by clicking on them) and the event ID (which just looks like random text) will be passed back to R.
+
+```
+data <- data.frame(content = c("today", "tomorrow"),
+                   start = c(Sys.Date(), Sys.Date() + 1))
+
+shinyApp(
+  ui = fluidPage(
+    timevisOutput("timeline"),
+    textOutput("selected")
+  ),
+  server = function(input, output) {
+    output$timeline <- renderTimevis({
+      timevis(data)
+    })
+    output$selected <- renderText({
+      input$timeline_selected
+    })
+  }
+)
+```
+
 ### Example code for tip 7b:
+
+The data from the timeline can now be passed back into R whenever it changes (you can double click anywhere to create a new item, or click on item to delete it).
+
+```
+data <- data.frame(content = c("today", "tomorrow"),
+                   start = c(Sys.Date(), Sys.Date() + 1))
+
+shinyApp(
+  ui = fluidPage(
+    timevisOutput("timeline"),
+    tableOutput("data")
+  ),
+  server = function(input, output) {
+    output$timeline <- renderTimevis({
+      timevis(data)
+    })
+    output$data <- renderTable({
+      input$timeline_data
+    })
+  }
+)
+```
 
 ### Example code for tip 8a:
 
+We just implemented a simple API function `setWindow()`, which we can call in a Shiny app.
+
+```
+shinyApp(
+  ui = fluidPage(
+    timevisOutput("timeline"), br(),
+    actionButton("btn", "Set window between yesterday and tomorrow")
+  ),
+  server = function(input, output) {
+    output$timeline <- renderTimevis({
+      timevis()
+    })
+    observeEvent(input$btn, {
+      setWindow("timeline", start = Sys.Date() - 1, end = Sys.Date() + 1)
+    })
+  }
+)
+```
+
 ### Example code for tip 8b:
+
+Nothing user-facing has changed, we just abstracted a lot of the API code. The previous app code should still work. 
 
 ### Example code for tip 8c:
 
+We can now chain API functions with `%>%` to make it easy to call multiple functions consecutively.
+
+```
+shinyApp(
+  ui = fluidPage(
+    timevisOutput("timeline"), br(),
+    actionButton("btn", "Add a blue line at midnight last night and set window between yesterday and tomorrow")
+  ),
+  server = function(input, output) {
+    output$timeline <- renderTimevis({
+      timevis()
+    })
+    observeEvent(input$btn, {
+      setWindow("timeline", start = Sys.Date() - 1, end = Sys.Date() + 1) %>%
+        addCustomTime(Sys.Date())
+    })
+  }
+)
+```
+
 ### Example code for tip 8d:
+
+You can now call API functions directly on an htmlwidget rather than using an ID, and they are also chain-able. This means that API functions can even be called on timeline widgets that are rendered outside of Shiny.
+
+```
+timevis() %>%
+  setWindow(start = Sys.Date() - 1, end = Sys.Date() + 1) %>%
+  addCustomTime(Sys.Date())
+```
