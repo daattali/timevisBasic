@@ -73,3 +73,14 @@ renderTimevis <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, timevisOutput, env, quoted = TRUE)
 }
+
+timevisBasic_html <- function(id, style, class, ...) {
+  htmltools::tags$div(
+    id = id, style = style, class = class,
+    htmltools::div(
+      style = "position: absolute;",
+      htmltools::tags$button("+"),
+      htmltools::tags$button("-")
+    )
+  )
+}
