@@ -41,7 +41,7 @@ The previous code will still work, but now you should be able to see zoom in and
 
 ### Example code for tip 3:
 
-We added `dataframeToD3()` function, so now our data frame changes.
+We added `dataframeToD3()` function, so now our data frame can be simplified, but the app code remains the same.
 
 ```
 data <- data.frame(content = c("today", "tomorrow"),
@@ -58,10 +58,39 @@ shinyApp(
 
 ### Example code for tip 4:
 
+In this tip, we made sure the widget only renders the latest data, rather than all the previous data as well. Run the following shiny app now, and try running it prior to tip 4 to see the difference.
 
+```
+shinyApp(
+  ui = fluidPage(
+    textInput("text", "Text", "Hello"),
+    timevisOutput("timeline")
+  ),
+  server = function(input, output) {
+    output$timeline <- renderTimevis({
+      data <- data.frame(content = input$text, start = Sys.Date())
+      timevis(data)
+    })
+  }
+)
+```
 
 ### Example code for tip 5:
 
+Run the same code as before, and you'll see that the initialization message runs only once.
+
 ### Example code for tip 6:
 
+If you run the same Shiny app code as before, you'll get a message telling you that you're inside a Shiny app. If you simply run `timevis()` in the console, the widget will render, but you will not be told you're in Shiny.
+
 ### Example code for tip 7a:
+
+### Example code for tip 7b:
+
+### Example code for tip 8a:
+
+### Example code for tip 8b:
+
+### Example code for tip 8c:
+
+### Example code for tip 8d:
