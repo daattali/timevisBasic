@@ -17,8 +17,8 @@ HTMLWidgets.widget({
 
     return {
 
-      renderValue: function(x) {
-        timeline.itemsData.add(x.items);
+      renderValue: function(opts) {
+        timeline.itemsData.add(opts.items);
       },
 
       resize : function(width, height) {
