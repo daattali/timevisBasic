@@ -16,7 +16,7 @@ Since each tip in the tutorial results in a more and more feature-heavy widget, 
 
 ### Example code for the initial project (what you can run right now)
 
-Using the code in the master branch:
+Using the code in the master branch, the following simple app should give you a minimal timeline widget.
 
 ```
 data <- list(list(content = "today", start = Sys.Date()),
