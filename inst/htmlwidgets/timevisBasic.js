@@ -18,6 +18,7 @@ HTMLWidgets.widget({
     return {
 
       renderValue: function(opts) {
+        timeline.itemsData.clear();
         timeline.itemsData.add(opts.items);
       },
 
