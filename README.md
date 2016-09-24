@@ -97,7 +97,7 @@ If you run the same Shiny app code as before, you'll get a message telling you t
 
 ### Example code for tip 7a:
 
-[See the code changes for tip 7a](https://github.com/daattali/timevisBasic/compare/tip6-shinyMode...tip7a-widget-to-r-data#diff
+[See the code changes for tip 7a](https://github.com/daattali/timevisBasic/compare/tip6-shinyMode...tip7a-widget-to-r-data#diff)
 
 You can now select events in the timeline (by clicking on them) and the event ID (which just looks like random text) will be passed back to R.
 
