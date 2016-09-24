@@ -21,10 +21,12 @@ HTMLWidgets.widget({
       renderValue: function(opts) {
         if (!initialized) {
           initialized = true;
-          alert("timeline is initialized!");
 
           if (HTMLWidgets.shinyMode) {
-            alert("Ooh, Shiny!");
+            timeline.on('select', function (properties) {
+              Shiny.onInputChange(elementId + "_selected", properties.items);
+            });
+            Shiny.onInputChange(elementId + "_selected", timeline.getSelection());
           }
         }
         timeline.itemsData.clear();
