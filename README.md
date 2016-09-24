@@ -125,7 +125,7 @@ shinyApp(
 
 [See the code changes for tip 7b](https://github.com/daattali/timevisBasic/compare/tip7a-widget-to-r-data...tip7b-javascript-to-r-handler#diff)
 
-The data from the timeline can now be passed back into R whenever it changes (you can double click anywhere to create a new item, or click on item to delete it).
+The data from the timeline can now be passed back into R whenever it changes (you can double click anywhere to create a new item, or click on an item to delete it).
 
 ```
 data <- data.frame(content = c("today", "tomorrow"),
