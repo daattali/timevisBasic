@@ -22,6 +22,10 @@ HTMLWidgets.widget({
         if (!initialized) {
           initialized = true;
           alert("timeline is initialized!");
+
+          if (HTMLWidgets.shinyMode) {
+            alert("Ooh, Shiny!");
+          }
         }
         timeline.itemsData.clear();
         timeline.itemsData.add(opts.items);
