@@ -102,3 +102,13 @@ dataframeToD3 <- function(df) {
     jsonlite::fromJSON(jsonlite::toJSON(data, auto_unbox = TRUE))
   })
 }
+
+#' @export
+setWindow <- function(id, start, end, options) {
+  message <- list(id = id, start = start, end = end)
+  if (!missing(options)) {
+    message['options'] <- options
+  }
+  session <- shiny::getDefaultReactiveDomain()
+  session$sendCustomMessage("timevis:setWindow", message)
+}

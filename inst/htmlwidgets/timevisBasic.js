@@ -21,7 +21,7 @@ HTMLWidgets.widget({
       renderValue: function(opts) {
         if (!initialized) {
           initialized = true;
-          timeline.setOptions({ editable : true });
+          container.timeline = timeline;
 
           if (HTMLWidgets.shinyMode) {
             timeline.on('select', function (properties) {
@@ -48,3 +48,12 @@ HTMLWidgets.widget({
     };
   }
 });
+
+if (HTMLWidgets.shinyMode) {
+  Shiny.addCustomMessageHandler("timevis:setWindow", function(message) {
+    var el = document.getElementById(message.id);
+    if (el) {
+      el.timeline.setWindow(message.start, message.end, message.options);
+    }
+  });
+}
