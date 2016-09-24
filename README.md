@@ -211,3 +211,5 @@ timevis() %>%
   setWindow(start = Sys.Date() - 1, end = Sys.Date() + 1) %>%
   addCustomTime(Sys.Date())
 ```
+
+After implementing all these tips, the app is a lot more useful. Hopefully you can now translate this knowledge into your own htmlwidget!
