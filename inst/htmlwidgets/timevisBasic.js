@@ -14,10 +14,15 @@ HTMLWidgets.widget({
     var elementId = el.id;
     var container = document.getElementById(elementId);
     var timeline = new vis.Timeline(container, [], {});
+    var initialized = false;
 
     return {
 
       renderValue: function(opts) {
+        if (!initialized) {
+          initialized = true;
+          alert("timeline is initialized!");
+        }
         timeline.itemsData.clear();
         timeline.itemsData.add(opts.items);
       },
