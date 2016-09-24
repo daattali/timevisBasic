@@ -96,3 +96,9 @@ dataframeToD3 <- function(df) {
   row.names(df) <- NULL
   apply(df, 1, function(row) as.list(row[!is.na(row)]))
 }
+
+.onLoad <- function(libname, pkgname) {
+  shiny::registerInputHandler("timevisDF", function(data, ...) {
+    jsonlite::fromJSON(jsonlite::toJSON(data, auto_unbox = TRUE))
+  })
+}

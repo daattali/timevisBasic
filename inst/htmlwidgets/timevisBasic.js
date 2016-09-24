@@ -21,12 +21,20 @@ HTMLWidgets.widget({
       renderValue: function(opts) {
         if (!initialized) {
           initialized = true;
+          timeline.setOptions({ editable : true });
 
           if (HTMLWidgets.shinyMode) {
             timeline.on('select', function (properties) {
               Shiny.onInputChange(elementId + "_selected", properties.items);
             });
             Shiny.onInputChange(elementId + "_selected", timeline.getSelection());
+            
+            timeline.itemsData.on('*', function (event, properties, senderId) {
+              Shiny.onInputChange(
+                elementId + "_data" + ":timevisDF",
+                timeline.itemsData.get()
+              );
+            });
           }
         }
         timeline.itemsData.clear();
