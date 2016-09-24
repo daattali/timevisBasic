@@ -27,7 +27,7 @@
 #' )
 #' @export
 timevis <- function(data = list(), width = NULL, height = NULL, elementId = NULL) {
-  items <- data
+  items <- dataframeToD3(data)
   
   # forward options using x
   x = list(
@@ -83,4 +83,16 @@ timevisBasic_html <- function(id, style, class, ...) {
       htmltools::tags$button("-")
     )
   )
+}
+
+dataframeToD3 <- function(df) {
+  if (missing(df) || is.null(df)) {
+    return(list())
+  }
+  if (!is.data.frame(df)) {
+    stop("timevis: the input must be a dataframe", call. = FALSE)
+  }
+  
+  row.names(df) <- NULL
+  apply(df, 1, function(row) as.list(row[!is.na(row)]))
 }
