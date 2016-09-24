@@ -4,7 +4,7 @@
 \alias{timevis}
 \title{Create a basic timeline visualization}
 \usage{
-timevis(data = list(), width = NULL, height = NULL, elementId = NULL)
+timevis(data, width = NULL, height = NULL, elementId = NULL)
 }
 \description{
 Create a basic timeline visualization

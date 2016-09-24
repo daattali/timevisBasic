@@ -26,7 +26,7 @@
 #'   }
 #' )
 #' @export
-timevis <- function(data = list(), width = NULL, height = NULL, elementId = NULL) {
+timevis <- function(data, width = NULL, height = NULL, elementId = NULL) {
   items <- dataframeToD3(data)
   
   # forward options using x
