@@ -108,6 +108,7 @@ callJS <- function() {
   session <- shiny::getDefaultReactiveDomain()
   method <- paste0("timevis:", message$method)
   session$sendCustomMessage(method, message)
+  return(message$id)
 }
 
 #' @export
@@ -121,3 +122,7 @@ addCustomTime <- function(id, time, itemId) {
   method <- "addCustomTime"
   callJS()
 }
+
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
