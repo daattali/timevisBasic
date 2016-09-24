@@ -21,7 +21,7 @@ HTMLWidgets.widget({
       renderValue: function(opts) {
         if (!initialized) {
           initialized = true;
-          container.timeline = timeline;
+          container.widget = this;
 
           if (HTMLWidgets.shinyMode) {
             timeline.on('select', function (properties) {
@@ -43,6 +43,13 @@ HTMLWidgets.widget({
 
       resize : function(width, height) {
         // we won't be implementing a resize function
+      },
+      
+      setWindow : function(params) {
+        timeline.setWindow(params.start, params.end, params.options);
+      },
+      addCustomTime : function(params) {
+        timeline.addCustomTime(params.time, params.itemId);
       }
    
     };
@@ -50,10 +57,22 @@ HTMLWidgets.widget({
 });
 
 if (HTMLWidgets.shinyMode) {
-  Shiny.addCustomMessageHandler("timevis:setWindow", function(message) {
-    var el = document.getElementById(message.id);
-    if (el) {
-      el.timeline.setWindow(message.start, message.end, message.options);
-    }
-  });
+  var fxns = ['setWindow', 'addCustomTime'];
+  
+  var addShinyHandler = function(fxn) {
+    return function() {
+      Shiny.addCustomMessageHandler(
+        "timevis:" + fxn, function(message) {
+          var el = document.getElementById(message.id);
+          if (el) {
+            el.widget[fxn](message);
+          }
+        }
+      );
+    };
+  };
+
+  for (var i = 0; i < fxns.length; i++) {
+    addShinyHandler(fxns[i])();
+  }
 }

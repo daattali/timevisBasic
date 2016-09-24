@@ -103,12 +103,21 @@ dataframeToD3 <- function(df) {
   })
 }
 
+callJS <- function() {
+  message <- Filter(function(x) !is.symbol(x), as.list(parent.frame(1)))
+  session <- shiny::getDefaultReactiveDomain()
+  method <- paste0("timevis:", message$method)
+  session$sendCustomMessage(method, message)
+}
+
 #' @export
 setWindow <- function(id, start, end, options) {
-  message <- list(id = id, start = start, end = end)
-  if (!missing(options)) {
-    message['options'] <- options
-  }
-  session <- shiny::getDefaultReactiveDomain()
-  session$sendCustomMessage("timevis:setWindow", message)
+  method <- "setWindow"
+  callJS()
+}
+
+#' @export
+addCustomTime <- function(id, time, itemId) {
+  method <- "addCustomTime"
+  callJS()
 }
