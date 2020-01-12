@@ -1,7 +1,5 @@
 # timevisBasic - Helper package to learn advanced 'htmlwidgets' tips
 
-[![saythanks](http://i.imgur.com/L88apDa.png)](https://saythanks.io/to/daattali)
-
 The [`timevis`](https://github.com/daattali/timevis) package is an htmlwidget that lets you create timeline visualizations. This package includes a very basic implementation of the `timevis` package and is used as an educational tool for teaching advanced htmlwidgets tips.
 
 ## Tutorial
